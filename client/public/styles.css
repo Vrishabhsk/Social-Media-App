@@ -1,0 +1,227 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Baloo Tammudu 2", cursive;
+}
+
+#root {
+  background: linear-gradient(#4e54c8, #8f94fb);
+}
+
+.front {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+u {
+  text-underline-position: under;
+}
+
+.wel-text {
+  width: 40%;
+  text-align: center;
+  border: 3px solid #000;
+  border-radius: 20px;
+  box-shadow: 2px 2px #000;
+  padding: 20px;
+  color: #fff;
+}
+
+.linked {
+  display: flex;
+}
+
+.links {
+  text-decoration: none;
+}
+
+.register,
+.login {
+  height: 86.3vh;
+  text-align: center;
+  width: 50%;
+  margin: auto auto 0px auto;
+  padding-top: 100px;
+}
+
+.reg {
+  width: 40%;
+  margin: auto;
+}
+
+.title {
+  margin-top: 0px;
+}
+
+.dash {
+  height: 500vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 800px auto;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.profile {
+  height: 70vh;
+  border-radius: 20px;
+}
+
+.feed {
+  border-radius: 20px;
+}
+
+.profile {
+  width: 150px;
+  position: fixed;
+  left: 1150px;
+  background-color: white;
+}
+
+.feed {
+  margin-right: 40px;
+}
+
+.post,
+.others {
+  background-color: white;
+  border-radius: 20px;
+}
+
+.others {
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.post {
+  height: 10vh;
+  margin-bottom: 20px;
+}
+
+.postCard {
+  display: flex;
+}
+
+.profileCard {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.profpic,
+.postProf {
+  border: 2px solid;
+  border-radius: 50%;
+}
+
+.postProf {
+  width: 50px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.profpic {
+  width: 80px;
+  margin: 20px auto 0px auto;
+}
+
+.modal {
+  position: relative;
+  top: 20px;
+  left: 30px;
+  display: flex;
+}
+
+.postText {
+  width: 90%;
+  padding: 10px;
+}
+
+.modelBtn {
+  position: relative;
+  bottom: 6px;
+  border-radius: 20px;
+  border: 2px solid;
+  width: 400px;
+  padding: 7px 0px 0px 20px;
+  margin-right: 30px;
+}
+
+.icons span {
+  position: relative;
+  bottom: 7px;
+  margin: 0px 20px 0px 0px;
+}
+
+.icons {
+  position: relative;
+  top: 6px;
+}
+
+.modelBtn:hover,
+span,
+.icons {
+  cursor: pointer;
+}
+
+.btn {
+  margin-right: 20px;
+}
+
+.user {
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.content {
+  display: grid;
+  justify-content: center;
+}
+
+.update {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 600px;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+.updPic {
+  width: 200px;
+  display: flex;
+  margin: auto;
+  border-radius: 50%;
+  border: 3px solid;
+}
+
+.cent {
+  display: flex;
+  margin: auto;
+}
+
+.cent label {
+  margin-right: 20px;
+}
+
+.myposts {
+  height: 300vh;
+  display: grid;
+  grid-template-columns: 800px;
+  justify-content: center;
+}
+
+.top {
+  margin-top: 50px;
+}
+
+.head {
+  margin: auto;
+  padding-left: 670px;
+  padding-top: 20px;
+}
