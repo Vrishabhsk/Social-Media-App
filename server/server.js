@@ -90,28 +90,36 @@ app.get("/user", (req, res) => {
 
 //update profile details
 app.post("/api/update", upload.single("profilePic"), (req, res) => {
-  console.log(req.body);
-  console.log(req.file.originalname);
-  if (req.body.password === "") {
+  if (!req.body.newPassword) {
     User.findById(req.user._id, (err, result) => {
       result.username = req.body.username;
       result.password = req.body.password;
       result.email = req.body.email;
-      result.profilePic = req.file.originalname;
+      if (req.body.profilePic) result.profilePic = req.file.originalname;
       result.save((err) => {
         if (err) throw err;
       });
+      res.send("Profile Updated!");
     });
-  } else if (req.body.password !== "") {
-    bcrypt.hash(req.body.password, 10, (err, hash) => {
+  } else {
+    bcrypt.hash(req.body.newPassword, 10, (err, hash) => {
       User.findById(req.user._id, (err, result) => {
         if (err) throw err;
-        result.username = req.body.username;
-        result.email = req.body.email;
-        result.password = hash;
-        result.profilePic = req.file.originalname;
-        result.save((err) => {
+        bcrypt.compare(req.body.oldPassword, result.password, (err, ok) => {
           if (err) throw err;
+          if (ok) {
+            result.username = req.body.username;
+            result.email = req.body.email;
+            result.password = hash;
+            if (req.body.profilePic) result.profilePic = req.file.originalname;
+            result.save((err) => {
+              if (err) throw err;
+            });
+            res.send("Profile Updated!");
+          }
+          if (!ok) {
+            res.send("Old password does not match!");
+          }
         });
       });
     });

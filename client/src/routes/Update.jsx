@@ -36,7 +36,7 @@ export default function Update(props) {
       formData.append("username", userDetails.username);
       formData.append("email", userDetails.email);
       formData.append("password", userDetails.password);
-      formData.append("profilePic", newPic);
+      if (newPic !== "") formData.append("profilePic", newPic);
       axios({
         method: "POST",
         withCredentials: true,
@@ -46,13 +46,12 @@ export default function Update(props) {
         toast.success(res.data);
       });
     } else if (userDetails.oldPass !== "" && userDetails.newPass !== "") {
-      if (userDetails.oldPass !== userDetails.password)
-        toast.error("Old Password entered incorrectly");
       const formData = new FormData();
       formData.append("username", userDetails.username);
       formData.append("email", userDetails.email);
-      formData.append("password", userDetails.newPass);
-      formData.append("profilePic", newPic);
+      formData.append("oldPassword", userDetails.oldPass);
+      formData.append("newPassword", userDetails.newPass);
+      if (newPic !== "") formData.append("profilePic", newPic);
       axios({
         method: "POST",
         withCredentials: true,
@@ -90,6 +89,7 @@ export default function Update(props) {
       <Text
         label="Enter old Password (Only if needed to be changed)"
         name="oldPass"
+        type="password"
         onChange={handleChange}
         value={userDetails.oldPass}
       />
@@ -97,6 +97,7 @@ export default function Update(props) {
         label="Enter new Password (Only if needed to be changed)"
         onChange={handleChange}
         name="newPass"
+        type="password"
         value={userDetails.newPass}
       />
       <StyledButton onClick={handleSubmit} content="Update" />
