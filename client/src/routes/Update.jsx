@@ -37,6 +37,8 @@ export default function Update(props) {
       formData.append("email", userDetails.email);
       formData.append("password", userDetails.password);
       if (newPic !== "") formData.append("profilePic", newPic);
+      else if (newPic === "")
+        formData.append("profilePic", userDetails.profilePic);
       axios({
         method: "POST",
         withCredentials: true,
@@ -52,6 +54,8 @@ export default function Update(props) {
       formData.append("oldPassword", userDetails.oldPass);
       formData.append("newPassword", userDetails.newPass);
       if (newPic !== "") formData.append("profilePic", newPic);
+      else if (newPic === "")
+        formData.append("profilePic", userDetails.profilePic);
       axios({
         method: "POST",
         withCredentials: true,

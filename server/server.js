@@ -95,7 +95,7 @@ app.post("/api/update", upload.single("profilePic"), (req, res) => {
       result.username = req.body.username;
       result.password = req.body.password;
       result.email = req.body.email;
-      if (req.body.profilePic) result.profilePic = req.file.originalname;
+      if (req.file) result.profilePic = req.file.originalname;
       result.save((err) => {
         if (err) throw err;
       });
@@ -111,7 +111,7 @@ app.post("/api/update", upload.single("profilePic"), (req, res) => {
             result.username = req.body.username;
             result.email = req.body.email;
             result.password = hash;
-            if (req.body.profilePic) result.profilePic = req.file.originalname;
+            if (req.file) result.profilePic = req.file.originalname;
             result.save((err) => {
               if (err) throw err;
             });
