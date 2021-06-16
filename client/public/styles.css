@@ -22,11 +22,9 @@ u {
 }
 
 .wel-text {
-  width: 40%;
-  text-align: center;
-  border: 3px solid #000;
+  width: 45%;
+  text-align: left;
   border-radius: 20px;
-  box-shadow: 2px 2px #000;
   padding: 20px;
   color: #fff;
 }
@@ -79,7 +77,6 @@ u {
   width: 150px;
   position: fixed;
   left: 1150px;
-  background-color: white;
 }
 
 .feed {
@@ -88,13 +85,25 @@ u {
 
 .post,
 .others {
-  background-color: white;
   border-radius: 20px;
+}
+
+.profile,
+.post,
+.others {
+  background-color: #ffd9e8;
+  border: 2px solid #000;
 }
 
 .others {
   padding: 20px;
-  margin-bottom: 40px;
+  width: 600px;
+  margin: 0px auto 20px auto;
+}
+
+h2 {
+ display: flex;
+ justify-content: center;
 }
 
 .post {
@@ -122,7 +131,7 @@ u {
 .postProf {
   width: 50px;
   position: relative;
-  top: 10px;
+  top: 5px;
   left: 10px;
 }
 
@@ -174,20 +183,16 @@ span,
   margin-right: 20px;
 }
 
-.user {
-  text-decoration: underline;
-  text-underline-position: under;
-}
-
 .content {
   display: grid;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .update {
   height: 100vh;
   display: grid;
-  grid-template-columns: 600px;
+  grid-template-columns: 400px;
   justify-content: center;
   padding-bottom: 50px;
 }
@@ -221,7 +226,16 @@ span,
 }
 
 .head {
-  margin: auto;
-  padding-left: 670px;
-  padding-top: 20px;
+  border: 3px solid;
+  border-radius: 20px;
+  background-color: #ffd9e8;
+  margin: 0px 500px 0px 500px;
+  text-align: center;
+}
+
+.photo,
+.vid {
+  width: 400px;
+  border: 2px solid #000;
+  border-radius: 30px;
 }

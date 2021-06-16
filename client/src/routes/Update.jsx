@@ -75,7 +75,7 @@ export default function Update(props) {
         className="updPic"
       />
       <div className="cent">
-        <label htmlFor="file">Choose new picture: </label>
+        <label htmlFor="file">Upload New: </label>
         <input type="file" filename="newPic" onChange={handleFile} />
       </div>
       <Text

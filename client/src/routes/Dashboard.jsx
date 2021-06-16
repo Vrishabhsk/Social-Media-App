@@ -24,21 +24,22 @@ export default function Dashboard(props) {
               {posts.map((post) => {
                 return (
                   <div className="others">
-                    <div className="user">{post.username}</div>
+                    <div>{post.username}</div>
+                    <hr />
                     <div className="content">
                       {post.photo ? (
                         <img
-                          width="500px"
+                          className="photo"
                           src={`./uploads/${post.photo}`}
                           alt="disp"
                         />
                       ) : null}
                       {post.video ? (
-                        <video width="500px" controls>
+                        <video className="vid" controls>
                           <source src={`./uploads/${post.video}`} alt="vids" />
                         </video>
                       ) : null}
-                      <p>{post.post}</p>
+                      <p className="caption">{post.post}</p>
                     </div>
                   </div>
                 );

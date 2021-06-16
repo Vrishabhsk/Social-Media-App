@@ -32,10 +32,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
 
-mongoose.connect("mongodb://localhost:27017/Social", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb://localhost:27017/Social",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("Database Connected!");
+  }
+);
 
 //multer for posting pictures and videos
 const storage = multer.diskStorage({
@@ -50,7 +56,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //authenticate user
-app.post("/register", upload.single("profilePic"), (req, res) => {
+app.post("/register", upload.single("profilePic"), (req, res, next) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
     if (doc) res.send("User Already Exists");
@@ -63,7 +69,14 @@ app.post("/register", upload.single("profilePic"), (req, res) => {
         profilePic: "default.png",
       });
       await newUser.save();
-      res.send("New user created");
+      passport.authenticate("local", (err, user) => {
+        if (err) throw err;
+        if (user) {
+          req.login(user, (err) => {
+            res.send("New user created");
+          });
+        }
+      })(req, res, next);
     }
   });
 });
@@ -80,8 +93,11 @@ app.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-app.post("/logout", (req, res, next) => {
-  req.logout();
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) throw err;
+    else res.send("Logged Out!");
+  });
 });
 
 app.get("/user", (req, res) => {

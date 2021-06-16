@@ -22,7 +22,7 @@ export default function Profile(props) {
         <StyledButton
           onClick={() => {
             axios({
-              method: "POST",
+              method: "GET",
               withCredentials: true,
               url: "http://localhost:5000/logout",
             }).then((res) => {
